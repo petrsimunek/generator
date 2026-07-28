@@ -100,19 +100,15 @@ function createGeneratorRow(generator) {
   copyBtn.textContent = "Kopírovat";
   copyBtn.addEventListener("click", () => copyValue(generator.id));
 
-  outputWrap.append(output, copyBtn);
-
-  const actions = document.createElement("div");
-  actions.className = "actions";
-
   const generateBtn = document.createElement("button");
   generateBtn.type = "button";
   generateBtn.className = "btn btn-primary";
-  generateBtn.textContent = "Generovat znovu";
+  generateBtn.title = "Generovat znovu";
+  generateBtn.textContent = "Znovu";
   generateBtn.addEventListener("click", () => regenerate(generator.id));
 
-  actions.append(generateBtn);
-  article.append(head, outputWrap, actions);
+  outputWrap.append(output, copyBtn, generateBtn);
+  article.append(head, outputWrap);
 
   rows.set(generator.id, { output, copyBtn, generator });
   return article;
